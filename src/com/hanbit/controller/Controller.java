@@ -3,12 +3,13 @@ package com.hanbit.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import com.hanbit.oop.service.BigNumberService;
+import com.hanbit.oop.service.BmiService;
 import com.hanbit.oop.service.CalcService;
-import com.hanbit.oop.service.GradeReportService;
+import com.hanbit.oop.service.GradeService;
 import com.hanbit.oop.service.RankingService;
 import com.hanbit.oop.service.SecTimeService;
 import com.hanbit.oop.service.TaxCalculService;
+import com.hanbit.oop.service.BigNumberService;
 
 import javafx.scene.control.Tab;
 
@@ -16,56 +17,61 @@ public class Controller {
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		CalcService calcService = new CalcService();
-		BigNumberService bigNum = new BigNumberService();
 		SecTimeService secTime = new SecTimeService();
 		TaxCalculService taxCalcul = new TaxCalculService();
 		RankingService ranking= new RankingService();
-		GradeReportService gradeReport=new GradeReportService();
+		GradeService g = new GradeService();
+		BmiService bm= new BmiService();
+		BigNumberService bigNum = new BigNumberService();
 		
 		while (true) {
-			System.out.println("0.stop 1.bmi 2.+ 3.- 4.bigNumber 5.secTime 6.taxCalcul 7.leapYear");
+			System.out.println("0.stop 1.Bmi 2.grade 3.- 4.bigNumber 5.secTime 6.taxCalcul 7.leapYear");
 			switch (s.next()) {
 			case "0":
 				System.out.println("end");
 				return;
 
 			case "1":
-				System.out.print("height:  m(미터) (주의: 키가 179cm일 경우 1.79로 표기)\n");
-				double height = s.nextDouble();
-				System.out.print("키는: " + height + "m\n");
-
-				System.out.print("weight:  kg(킬로그램)\n");
-				double weight = s.nextDouble();
-				System.out.print("몸무게는: " + weight + "m\n");
-				String result = calcService.calcBMI(height, weight);
-				System.out.print("my BMI: " + result);
-				break;
-			case "2":
-				System.out.println("Enter Integer");
-				int plusNum1=s.nextInt();
-				System.out.println("Enter Integer");
-				int plusNum2=s.nextInt();
-				int calcPlusResult=calcService.calcPlus(plusNum1, plusNum2);
-				break;
-			case "3":
-				System.out.println("Enter Integer");
-				int MinusNum1=s.nextInt();
-				System.out.println("Enter Integer");
-				int MinusNum2=s.nextInt();
-				int calcMinusResult=calcService.calcMinus(MinusNum1, plusNum2);
+				System.out.println("height? ");
+				double height=s.nextDouble();
+				System.out.println("weight? ");
+				double weight=s.nextDouble();
 				
-				System.out.println("Enter Integer");
-				int MultiNum1=s.nextInt();
-				System.out.println("Enter Integer");
-				int MultiNum2=s.nextInt();
-				int calcMultiResult=calcService.calcMulti(MultiNum1, MultiNum2);
-			case "4":
-				System.out.println("Enter Integer");
-				int DivideNum1=s.nextInt();
-				System.out.println("Enter Integer");
-				int DivideNum2=s.nextInt();
-				int calcDivideResult=calcService.calcDivide(DivideNum1, DivideNum2);
-			break;
+				bm.setWeight(weight);
+				bm.setHeight(height);
+				bm.setBmi();
+				bm.setResult();
+				
+				System.out.println(bm.getResult());
+				break;
+				
+			case "2":
+				System.out.print("이름?\n");
+				String name=s.next();
+				g.setName(name);
+				
+				System.out.print("전공?\n");
+				String major=s.next();
+				g.setMajor(major);
+				
+				System.out.print("국어점수?\n");
+				int kor=s.nextInt();
+				g.setKor(kor);
+
+				System.out.print("영어점수?\n");
+				int eng=s.nextInt();
+				g.setEng(eng);
+
+				System.out.print("수학점수?\n");
+				int math=s.nextInt();
+				g.setMath(math);
+				
+				g.setGrade();
+				
+				System.out.println(g.toString());
+				break;
+				
+			case "3":
 				
 			case "5":
 				System.out.print("A 값을 입력하세요");
@@ -87,8 +93,8 @@ public class Controller {
 
 				String secTimeResult = secTime.execute(second);
 				break;
-
-			case "6":
+/*
+			case "7":
 				System.out.println("이름을 입력 하시오");
 				String name = s.next();
 				System.out.println("연봉 입력 하시오(단위: 만원)");
@@ -102,14 +108,14 @@ public class Controller {
 				System.out.print("연봉%" + salary + "만원을 받으시는" + name + "님께서 납부할 세금은" + taxCalculResult[0] + "만원입니다.");
 				break;
 
-			case "7":
+			case "8":
 				System.out.println("연도를 입력 하세요.");
 				int year = s.nextInt();
 				
 				System.out.print("leapYearResult");
 				break;
 
-			case "8":
+			case "9":
 				System.out.println("###### 성적 랭킹 ######");
 				int[] scores=new int[3]; 
 				String[] names=new String[3];
@@ -130,7 +136,7 @@ public class Controller {
 				//System.out.println(rankingResult);
 				//System.out.print("1등:"+scoreRanking[0]+"점 \t 2등: "+scoreRanking[1] +"점 \t 3등: "+scoreRanking[2]+"점");
 				break;
-			case "9":
+		/*	case "10":
 				//input
 				System.out.print("Enter Name: \n");
 				String yourName=s.next();		
@@ -150,6 +156,7 @@ public class Controller {
 				System.out.print("***********************************");
 				
 				System.out.print(gradeReportResult);
+				*/
 			}
 		}
 	}

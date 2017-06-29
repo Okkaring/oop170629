@@ -21,17 +21,17 @@ public class CalcService{
 		}
 		return result;	
 	}
-	public String calcPlus(String plusNum1, String plusNum2){
-		return String.valueOf(Integer.parseInt(plusNum1)+Integer.parseInt(plusNum2));
+	public String calcPlus(String num1, String num2){
+		return String.valueOf(Integer.parseInt(num1)+Integer.parseInt(num2));
 	}
-	public String calcMinus(String MinusNum1, String MinusNum2){
-		return String.valueOf(Integer.parseInt(MinusNum1)+Integer.parseInt(MinusNum2));
+	public String calcMinus(String num1, String num2){
+		return String.valueOf(Integer.parseInt(num1)+Integer.parseInt(num2));
 	}
-	public String calcMulti(String MultiNum1, String MultiNum2){
-		return String.valueOf(Integer.parseInt(MultiNum1)+Integer.parseInt(MultiNum2));
+	public String calcMulti(String num1, String num2){
+		return String.valueOf(Integer.parseInt(num1)+Integer.parseInt(num2));
 	}
-	public String calcDivide(String DivideNum1, String DivideNum2){
-		return String.valueOf(Integer.parseInt(DivideNum1)+Integer.parseInt(DivideNum2));
+	public String calcDivide(String num1, String num2){
+		return String.valueOf(Integer.parseInt(num1)+Integer.parseInt(num2));
 	}
 	
 }
