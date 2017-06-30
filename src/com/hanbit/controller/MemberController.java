@@ -2,50 +2,43 @@ package com.hanbit.controller;
 
 
 import java.util.Scanner;
+
+import com.hanbit.oop.domain.MemberBean;
 import com.hanbit.oop.service.MemberService;
+import javax.swing.*;
 
 public class MemberController {
 	public static void main(String[] args) {
-		Scanner s=new Scanner(System.in);
 	//Engine
 		MemberService member=new MemberService();
+		MemberBean memberB=new MemberBean(); 				//s, member,memberB는 
 		while(true){
-			System.out.println("0.Stop 1.join 2.login");
-			switch(s.next()){
+			//System.out.println("0.Stop 1.join 2.login");
+		//	String flag=JOptionPane.showInputDialog("0.Stop 1.join 2.login");
+			//String flag=s.next();
+			
+			switch(JOptionPane.showInputDialog("0.Stop 1.join 2.login")){
 			case "0": 
 				System.out.println("Stop!!");
 				return;
 			case "1":
 				System.out.println("Join");
-				System.out.println("이름: ");
-				String name = s.next();
-				member.setName(name);
-				System.out.println("ID: ");
-				String id = s.next();
-				member.setId(id);
-				System.out.println("PW: ");
-				String pw = s.next();
-				member.setPw(pw);
-				System.out.println("SSN");
-				String ssn = s.next();
-				member.setSSN(ssn);
-				System.out.println("회원가입 성공!!");
+				
+				memberB.setName(JOptionPane.showInputDialog("name?"));
+				memberB.setId(JOptionPane.showInputDialog("ID?"));
+				memberB.setPw(JOptionPane.showInputDialog("PW?"));
+				memberB.setSsn(JOptionPane.showInputDialog("SSN?"));
+				JOptionPane.showMessageDialog(null, member.join(memberB));
 				break;	
 			case "2":
-				System.out.println("Login");
-				System.out.println("ID: ");
-				String loginId = s.next();
-				member.setLoginId(loginId);
-				System.out.println("PW: ");
-				String loginPw = s.next();
-				member.setLoginPw(loginPw);
-				System.out.println("ssn: "+member.getSSN());
-				member.setLogin(loginId,loginPw);
-				System.out.println("joing id: "+member.getId());
-				System.out.println("joing pw: "+member.getPw());
-				System.out.println(member.getLogin());
+			//	memberB=new MemberBean(); // 멤버빈에있는 값을 초기화한다. 그러면 member는 지금 member에 있는 값.즉, 로그인단계에서 받는 값
+				System.out.println("...Login...");
+				
+				memberB.setId(JOptionPane.showInputDialog("ID?"));
+				memberB.setPw(JOptionPane.showInputDialog("PW?"));
+				
+				JOptionPane.showMessageDialog(null, member.login(memberB));
 			break;
-			
 			}
 		}
 	}
