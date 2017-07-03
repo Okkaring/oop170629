@@ -5,12 +5,14 @@ import java.util.Scanner;
 
 import com.hanbit.oop.domain.MemberBean;
 import com.hanbit.oop.service.MemberService;
+import com.hanbit.oop.serviceImpl.MemberServiceImpl;
+
 import javax.swing.*;
 
 public class MemberController {
 	public static void main(String[] args) {
 	//Engine
-		MemberService member=new MemberService();
+		MemberService member=new MemberServiceImpl();
 		MemberBean memberB=new MemberBean(); 				//s, member,memberB는 
 		while(true){
 			//System.out.println("0.Stop 1.join 2.login");

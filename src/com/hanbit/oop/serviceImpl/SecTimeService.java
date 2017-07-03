@@ -1,4 +1,4 @@
-package com.hanbit.oop.service;
+package com.hanbit.oop.serviceImpl;
 /* 초를 시간과 분으로 바꾸어 주는 프로그램입니다.
 초를 입력해주세요.
 60000

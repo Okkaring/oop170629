@@ -1,4 +1,4 @@
-package com.hanbit.oop.service;
+package com.hanbit.oop.serviceImpl;
 
 //3개의 값을 입력받고 내림차순으로 정렬
 
