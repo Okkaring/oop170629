@@ -32,6 +32,6 @@ public class MemberBean {
 			return name;
 		}
 		public String toString() {
-			return "";
+			return "회원: "+"이름 : "+name+"아이디: "+id+"패스워드: "+pw+"주민번호 : "+ssn;
 		}
 }

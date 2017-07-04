@@ -6,11 +6,12 @@ import com.hanbit.oop.domain.MemberBean;
 //지금은 목록을 가져오는 기능을 설정하는 것이다.
 
 public interface AdminService {
-	public void addMember(MemberBean member);			//set , member의 속성값을 갖고오는 기능
-	public MemberBean[] getMembers();					//get , member의 속성값을 구하고, 보내주는 기능
-	public int countMembers();							//get , member의 속성값을 구함, 멤버 수를 구해주는 기능
-	
-	
-	//MemberBean[] getMembers=new MemberBean[];
-	//선언 하는 법; MemberBean[] list=new MemberBean[]; ->[]여기에  숫자값을 넣어야하는데... 그건 회원수가 되겠지
+	public void addMember(MemberBean member);			//set 
+	//member는 오픈 불가능 속성이니까 일부러 은닉화해서 매개체로 보내주는 것
+	public MemberBean[] getMembers();					//get 
+	public int countMembers();							//get
+	public MemberBean findById(String id);	
+	//보안상 id는 공개되도 되는 속성값 그러니까 여기다 써줄수있는 것입니다.
+	public MemberBean[] findByName(String name); //리턴타입이 복수형이니까 배열로 잡아준 것입니다....
+	public void updatePass(MemberBean bean);
 }
